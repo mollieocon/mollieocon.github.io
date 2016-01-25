@@ -1,0 +1,491 @@
+/*---------------------------
+
+NEED TO
+
+- clean up code
+- fix up gallery (using diagram)
+- all styling to map - snazzy maps
+- see about adding slight zoom out feature
+
+
+-----------------------------*/
+html {
+    box-sizing: border-box;
+}
+
+*, 
+*:before, 
+*:after {
+    box-sizing: inherit;
+}
+/*----- put this in every css. Fixes the stupid box model
+
+----------*/
+
+body {
+	color: #333;
+	font: normal 14px/21px Avenir, helvetica, verdana, Arial;
+    background-color:#f6f6f6;
+    position: relative;
+}
+
+h1 {
+	font-size:50px;
+	line-height: 60px;
+    margin:0;
+    padding:25px;
+   
+}
+
+h2 {    
+
+}
+
+h3 {
+    font-size:30px
+}
+
+h4 {
+
+}
+
+h5 {
+
+}
+
+ul {
+
+}
+a{
+	color: black;
+    text-decoration: none;
+}
+footer {
+    padding: 15px;
+}
+
+main {
+    padding: 30px;
+}
+section {
+     padding:15px;
+    
+}
+
+/* ---------------------------------------------------------------------
+
+Layout
+
+--------------------------------------------------------------------- */
+/* ----------------------
+
+consider removing border - adding more padding instead?
+
+#top, #bottom, #left, #right {
+	background: #C0F3FF;
+	position: fixed;
+	}
+	#left, #right {
+		top: 0; bottom: 0;
+		width: 15px;
+		}
+		#left { left: 0; }
+		#right { right: 0; }
+		
+	#top, #bottom {
+		left: 0; right: 0;
+		height: 15px;
+		}
+		#top { top: 0; }
+		#bottom { bottom: 0; }
+
+--- */
+
+/*---------------------------
+
+
+
+Masthead
+
+-----------------------------*/
+
+.masthead {
+    width:100%;
+    background-color:#ededed;
+    padding-top:0px;
+}
+.content { 
+   width:800px;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+/*----- Home Section
+
+----------*/
+
+.owl-controls{
+    display:none;
+}
+
+/*----- About Section
+
+----------*/
+
+#carousel {
+    padding-top:2px;
+    
+}
+
+#about {
+    display:inline-block;
+    width:800px;
+    background-image:linear-gradient(rgba(255,255,255,0.3),rgba(255,255,255,0.7)),  url("../images/pammyinshop.png");
+    margin-bottom:30px;
+    min-height: 100vh;
+}
+
+#abouttext{
+    display:inline-block;
+    width:400px;
+    font-size:20px;
+    font-weight: bold;
+    color:#3f3f3f;
+    line-height: 25px;
+    padding-left: 40px;
+    vertical-align: top;
+    
+}
+
+/*----- tips Section
+
+----------*/
+
+#tips {
+     background-image:linear-gradient(rgba(255,255,255,0.4),rgba(255,255,255,0.4)),  url("../images/tips.png");
+    min-height: 100vh;
+    padding-top:10px;
+    font-size:20px;
+    color:#3f3f3f;
+}
+
+
+/*----- gallery Section
+
+----------*/
+
+#outsidemain {
+    padding-left:175px
+}
+
+.grid-item {
+  margin-bottom: 25px;
+}
+
+#grid {
+    padding-left:50px;
+    padding-right:20px;
+}
+
+/*----- Find us Section
+
+----------*/
+
+#find-us{
+    min-height: 90vh;
+    background-image:linear-gradient(rgba(255,255,255,0.3),rgba(255,255,255,0.3)),  url("../images/featherlamp.png");
+}
+
+#contactdetails {
+    width:40%;
+    float:left;
+    padding-right:20px;
+ 
+}
+
+#map-canvas{
+    height:300px;
+    width:60%;
+    margin: 0px;
+    padding:2px;
+    float:right;
+}
+
+.pic {
+    width:200px;
+    height:200px;
+}
+#logo {
+    text-align: center;
+}
+
+
+
+#picture {
+    display:inline-block;
+
+}
+
+/*----- Coming soon Section
+
+----------*/
+
+#comingsoon {
+    background-image:linear-gradient(rgba(255,255,255,0.2),rgba(255,255,255,0.2)),  url("../images/bluecupboard.png");
+    background-size: 100%;
+    min-height: 58vh;
+}
+
+#hints {
+    padding:20px;
+    padding-top: 40px;
+    font-size:20px;
+}
+
+#goback {
+    padding:20px;
+    font-size:20px;
+}
+
+
+/* Navigation */
+
+.nav {
+    display: none;
+	margin: 20px 0 0 0;
+	padding: 0;
+	list-style: none;
+
+}
+
+.nav-scrolled {
+    box-shadow: 1px 1px 1px;
+    position: fixed;
+    top:0;
+    left:0;
+    margin-top: 0;
+    width: 100%;
+    z-index: 2;
+}
+
+.nav-open .nav {
+    display: block;
+    
+}
+
+.nav li {
+    border-bottom: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav li:first-of-type {
+    border-left: none;
+}
+
+.nav a {
+    background: #ededed;
+    color: #333;
+	display: block;
+	padding: 10px 20px;
+    text-decoration: none;
+}
+
+.nav a:hover {
+    background: #aaa;
+    color: #fff;
+}
+/*extra add ins to make it stick*/
+
+nav.stick {
+    position: fixed;
+    top: 0;
+    z-index: 10000;
+    margin-top:10px;
+}
+
+
+#nav li.active a {
+     background: #aaa;
+    color: #fff;
+}
+
+
+/* Mobile nav toggle */
+
+#nav-toggle {
+    display: block;
+    width: 30px;
+    height: 25px;
+    position: relative;
+    transform: rotate(0deg);
+    transition: .5s ease-in-out;
+    cursor: pointer;
+    position: absolute;
+    top: 60px;
+    right: 30px;
+}
+
+#nav-toggle span {
+    display: block;
+    position: absolute;
+    height: 4px;
+    width: 100%;
+    background: #aaa;
+    border-radius: 4px;
+    border-color: #333;
+    opacity: 1;
+    left: 0;
+    transform: rotate(0deg);
+    transition: .25s ease-in-out;
+}
+
+
+#nav-toggle span:nth-child(1) {
+    top: 0px;
+}
+
+#nav-toggle span:nth-child(2),
+#nav-toggle span:nth-child(3) {
+    top: 10px;
+}
+
+#nav-toggle span:nth-child(4) {
+    top: 20px;
+}
+
+.nav-open #nav-toggle span:nth-child(1) {
+    top: 10px;
+    width: 0%;
+    left: 50%;
+}
+
+.nav-open #nav-toggle span:nth-child(2) {
+    transform: rotate(45deg);
+}
+
+.nav-open #nav-toggle span:nth-child(3) {
+    transform: rotate(-45deg);
+}
+
+.nav-open #nav-toggle span:nth-child(4) {
+    opacity: 0;
+    top: 10px;
+    width: 0%;
+    left: 50%;
+}
+
+
+
+/*---------------------------
+
+
+buttons
+
+-----------------------------*/
+
+}
+.btn {
+	color: #fff;
+	background: #333;
+	border: none;
+    border-radius: 4px;
+	display: inline-block;
+	padding: 10px 15px;
+	vertical-align: middle;
+	text-decoration: none;
+}
+
+.btn:hover {
+	color: #fff;
+	background: #aaa;
+}
+
+
+
+/*---------------------------
+
+
+Site-footer
+
+-----------------------------*/
+
+.site-footer{
+    background-color:#aaa;
+
+}
+
+.page-row-expanded { height: 100%; }
+
+
+.copyright {
+    padding-left: 30px;
+    width:100%;   
+}
+
+/*---------------------------
+
+helpers/fixers
+
+-----------------------------*/
+
+.clearfix:after {
+	content:"";
+	display: table;
+	clear: both;
+}
+
+/* ---------------------------------------------------------------------
+
+Responsive Styles
+
+--------------------------------------------------------------------- */
+
+@media 
+
+/* Fairly small screens including iphones */
+only screen and (max-width: 500px),
+
+/* iPads */
+only screen and (min-device-width: 768px) and (max-device-width: 1024px) 
+
+{
+	#top, #bottom, #left, #right { display: none; }
+}
+
+
+  /* Extra Small Devices, Phones */ 
+@media only screen and (min-width : 480px) {
+   .nav {
+    display: block;
+   }
+    .nav li {
+   float: left;
+   width: 20%;
+    }
+    #nav-toggle{
+    display: none;
+    }
+
+    .tips .tip{
+    float: left;
+    width: 50%;
+    }
+}
+
+ /* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+
+    .tips .tip{
+    float: left;
+    border-bottom: none;
+    border-left: 5px solid #fff;
+    width: 25%;
+    }
+
+    .tips .tip first-of-type{
+        border:none;
+
+
+    }
+    }
